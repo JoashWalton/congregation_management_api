@@ -1,0 +1,42 @@
+<%= form_with(model: soul, local: true) do |form| %>
+  <% if soul.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(soul.errors.count, "error") %> prohibited this soul from being saved:</h2>
+
+      <ul>
+        <% soul.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :middle_name %>
+    <%= form.text_field :middle_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birth_date %>
+    <%= form.date_select :birth_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unique_identifier %>
+    <%= form.text_field :unique_identifier %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

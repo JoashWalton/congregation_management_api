@@ -1,0 +1,2 @@
+class Soul < ApplicationRecord
+end
