@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Baptized:</strong>
+  <%= @publisher.baptized %>
+</p>
+
+<p>
+  <strong>Baptism date:</strong>
+  <%= @publisher.baptism_date %>
+</p>
+
+<p>
+  <strong>Other sheep:</strong>
+  <%= @publisher.other_sheep %>
+</p>
+
+<p>
+  <strong>Anointed:</strong>
+  <%= @publisher.anointed %>
+</p>
+
+<%= link_to 'Edit', edit_publisher_path(@publisher) %> |
+<%= link_to 'Back', publishers_path %>
