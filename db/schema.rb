@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_232126) do
+ActiveRecord::Schema.define(version: 2019_12_13_000241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contact_informations", force: :cascade do |t|
+    t.string "address"
+    t.string "apartment"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
+    t.string "country"
+    t.string "home_phone_number"
+    t.string "mobile_phone_number"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "publishers", force: :cascade do |t|
     t.boolean "baptized"
@@ -22,6 +36,8 @@ ActiveRecord::Schema.define(version: 2019_12_12_232126) do
     t.boolean "anointed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "soul_id", null: false
+    t.index ["soul_id"], name: "index_publishers_on_soul_id"
   end
 
   create_table "souls", force: :cascade do |t|
@@ -32,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_232126) do
     t.string "unique_identifier"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "gender"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +63,5 @@ ActiveRecord::Schema.define(version: 2019_12_12_232126) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "publishers", "souls"
 end
