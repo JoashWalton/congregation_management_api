@@ -28,12 +28,13 @@ RSpec.describe SoulsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Soul. As you add validations to Soul, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+  let(:valid_attributes) { 
+    FactoryBot.build(:soul).slice(:first_name, :middle_name, :last_name, :birth_date, :gender)
+    # { first_name: "Kenton", middle_name: "Strosin", last_name: "Fadel", birth_date: "2019-12-25", gender: "M" } 
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { first_name: "", middle_name: "", last_name: "", birth_date: "", gender: "" }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -97,14 +98,15 @@ RSpec.describe SoulsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        FactoryBot.build(:soul).slice(:first_name, :middle_name, :last_name, :birth_date, :gender)
       }
 
       it "updates the requested soul" do
         soul = Soul.create! valid_attributes
         put :update, params: {id: soul.to_param, soul: new_attributes}, session: valid_session
         soul.reload
-        skip("Add assertions for updated state")
+        expect(soul.first_name).to eq (new_attributes['first_name'])
+        expect(soul.last_name).to eq (new_attributes['last_name'])
       end
 
       it "redirects to the soul" do

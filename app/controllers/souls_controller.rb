@@ -69,6 +69,6 @@ class SoulsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def soul_params
-      params.require(:soul).permit(:first_name, :middle_name, :last_name, :birth_date, :unique_identifier)
+      params.require(:soul).permit(:first_name, :middle_name, :last_name, :birth_date, :gender)
     end
 end
