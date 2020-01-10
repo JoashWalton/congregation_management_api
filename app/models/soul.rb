@@ -3,8 +3,10 @@
 # middle_name
 # last_name
 # birth_date
-# unique_identifier
+# unique_identifier - auto generated
 # gender
+# death_date
+# baptism_date
 class Soul < ApplicationRecord
   attr_readonly :unique_identifier
 
@@ -17,7 +19,7 @@ class Soul < ApplicationRecord
 
   # For sanity in later times when this becaomes a crowded scene, and we have multiple John Smith's ,
   # we will assign a unique identifier to each unique soul - combination of all primary attributes of a 
-  # soul - first, midde, and last name, a birth date, and a gender.
+  # soul - first and last name, a birth date, and a gender.
   #
   # @return [String] a unique string of alphanumeric characters 32 charactrs long
   def set_unique_identifier
