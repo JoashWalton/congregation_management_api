@@ -126,4 +126,52 @@ RSpec.describe Soul, type: :model do
       end
     end
   end
+
+  describe '#death_date' do
+    it 'will be a Date' do
+      expect(soul_object.death_date).to be_a Date
+    end
+
+    context 'when invalid values are passed in' do 
+      context 'when a blank value' do
+        before { soul_object.death_date = '' }
+        it 'will not return an error' do
+          soul_object.save
+          expect(soul_object.errors).to_not include(:death_date)
+        end
+      end
+
+      context 'when a nil value' do
+        before { soul_object.death_date = nil }
+        it 'will not return an error' do
+          soul_object.save
+          expect(soul_object.errors).to_not include(:death_date)
+        end
+      end
+    end
+  end
+
+  describe '#baptism_date' do
+    it 'will be a Date' do
+      expect(soul_object.baptism_date).to be_a Date
+    end
+
+    context 'when invalid values are passed in' do 
+      context 'when a blank value' do
+        before { soul_object.baptism_date = '' }
+        it 'will not return an error' do
+          soul_object.save
+          expect(soul_object.errors).to_not include(:baptism_date)
+        end
+      end
+
+      context 'when a nil value' do
+        before { soul_object.baptism_date = nil }
+        it 'will not return an error' do
+          soul_object.save
+          expect(soul_object.errors).to_not include(:baptism_date)
+        end
+      end
+    end
+  end
 end
