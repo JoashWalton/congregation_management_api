@@ -10,23 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_10_234814) do
+ActiveRecord::Schema.define(version: 2020_01_12_035854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contact_informations", force: :cascade do |t|
-    t.string "address"
+    t.string "mailing_address"
     t.string "apartment"
-    t.string "city"
-    t.string "state"
-    t.string "zipcode"
+    t.string "mailing_city"
+    t.string "mailing_state"
+    t.string "mailing_zip_code"
     t.string "country"
     t.string "home_phone_number"
     t.string "mobile_phone_number"
-    t.string "email"
+    t.string "personal_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "theocratic_email"
+    t.string "post_office_box_number"
+    t.string "post_office_box_city"
+    t.string "post_office_box_state"
+    t.string "post_office_box_zip_code"
+    t.bigint "publisher_id", null: false
+    t.index ["publisher_id"], name: "index_contact_informations_on_publisher_id"
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -65,5 +72,6 @@ ActiveRecord::Schema.define(version: 2020_01_10_234814) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contact_informations", "publishers"
   add_foreign_key "publishers", "souls"
 end
