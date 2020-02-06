@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_232549) do
+ActiveRecord::Schema.define(version: 2020_02_06_233505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,9 @@ ActiveRecord::Schema.define(version: 2020_02_03_232549) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "soul_id", null: false
     t.boolean "unbaptized"
-    t.datetime "unbaptized_date"
+    t.date "unbaptized_date"
+    t.boolean "enrolled_in_school"
+    t.date "school_enrollment_date"
     t.index ["soul_id"], name: "index_publishers_on_soul_id"
   end
 
