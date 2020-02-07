@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :congregations
   resources :contact_informations
   resources :publishers
   devise_for :users

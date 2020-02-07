@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Congregations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Congregation number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @congregations.each do |congregation| %>
+      <tr>
+        <td><%= congregation.name %></td>
+        <td><%= congregation.congregation_number %></td>
+        <td><%= link_to 'Show', congregation %></td>
+        <td><%= link_to 'Edit', edit_congregation_path(congregation) %></td>
+        <td><%= link_to 'Destroy', congregation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Congregation', new_congregation_path %>
