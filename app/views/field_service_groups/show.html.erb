@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @field_service_group.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @field_service_group.location %>
+</p>
+
+<%= link_to 'Edit', edit_field_service_group_path(@field_service_group) %> |
+<%= link_to 'Back', field_service_groups_path %>

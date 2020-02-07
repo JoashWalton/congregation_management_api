@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :field_service_groups
   resources :congregations
   resources :contact_informations
   resources :publishers
