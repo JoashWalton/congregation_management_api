@@ -1,0 +1,2 @@
+module KingdomHallsHelper
+end
