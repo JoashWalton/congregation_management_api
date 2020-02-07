@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Field Service Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @field_service_groups.each do |field_service_group| %>
+      <tr>
+        <td><%= field_service_group.name %></td>
+        <td><%= field_service_group.location %></td>
+        <td><%= link_to 'Show', field_service_group %></td>
+        <td><%= link_to 'Edit', edit_field_service_group_path(field_service_group) %></td>
+        <td><%= link_to 'Destroy', field_service_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Field Service Group', new_field_service_group_path %>
