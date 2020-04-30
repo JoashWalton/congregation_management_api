@@ -11,4 +11,5 @@
 # school_enrollment_date - date one was enrolled in the school
 class Publisher < ApplicationRecord
   belongs_to :soul
+  belongs_to :congregation
 end
