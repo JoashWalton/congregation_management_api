@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_07_000227) do
+ActiveRecord::Schema.define(version: 2020_04_30_222255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,20 @@ ActiveRecord::Schema.define(version: 2020_02_07_000227) do
     t.index ["publisher_id"], name: "index_contact_informations_on_publisher_id"
   end
 
+  create_table "field_service_groups", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "kingdom_halls", force: :cascade do |t|
+    t.string "address"
+    t.integer "auditorium_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "publishers", force: :cascade do |t|
     t.boolean "baptized"
     t.date "baptism_date"
@@ -55,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_02_07_000227) do
     t.date "unbaptized_date"
     t.boolean "enrolled_in_school"
     t.date "school_enrollment_date"
+    t.integer "congregation_id"
+    t.index ["congregation_id"], name: "index_congregation_id"
     t.index ["soul_id"], name: "index_publishers_on_soul_id"
   end
 
