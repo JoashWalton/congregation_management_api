@@ -1,0 +1,2 @@
+class PublicSpeaker < ApplicationRecord
+end
