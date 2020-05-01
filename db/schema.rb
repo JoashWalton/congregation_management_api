@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_230156) do
+ActiveRecord::Schema.define(version: 2020_05_01_014315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_04_30_230156) do
   create_table "public_speakers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "congregation_id"
+    t.index ["congregation_id"], name: "index_public_speakers_with_congregation_id"
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -75,7 +77,9 @@ ActiveRecord::Schema.define(version: 2020_04_30_230156) do
     t.boolean "enrolled_in_school"
     t.date "school_enrollment_date"
     t.integer "congregation_id"
+    t.bigint "public_speaker_id"
     t.index ["congregation_id"], name: "index_congregation_id"
+    t.index ["public_speaker_id"], name: "index_publishers_on_public_speaker_id"
     t.index ["soul_id"], name: "index_publishers_on_soul_id"
   end
 
