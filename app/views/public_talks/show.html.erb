@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Public talk number:</strong>
+  <%= @public_talk.public_talk_number %>
+</p>
+
+<p>
+  <strong>Public talk title:</strong>
+  <%= @public_talk.public_talk_title %>
+</p>
+
+<p>
+  <strong>Public talk subject:</strong>
+  <%= @public_talk.public_talk_subject %>
+</p>
+
+<%= link_to 'Edit', edit_public_talk_path(@public_talk) %> |
+<%= link_to 'Back', public_talks_path %>
