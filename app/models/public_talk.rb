@@ -1,2 +1,3 @@
 class PublicTalk < ApplicationRecord
+
 end
