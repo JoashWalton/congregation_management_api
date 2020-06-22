@@ -24,7 +24,7 @@ module PublicTalk
         7 10 12 14 15 48 68 69 72 77 78 103 112 144 148 157 165 171 185
       ],
       'Evangelizing/Ministry': %w[17 63 66 81],
-      'Faith/Spirituality': %w[],
+      'Faith/Spirituality': %w[1 9 16 18 22 31 39 46 67 70 71 74 87 ],
       'Family/Youth': [],
       'Kingdom/Paradise': [],
       'Last Days/God\'s Judgement': [],
