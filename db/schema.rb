@@ -10,10 +10,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_000350) do
+ActiveRecord::Schema.define(version: 2020_05_01_014315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "congregations", force: :cascade do |t|
+    t.string "name"
+    t.string "congregation_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "contact_informations", force: :cascade do |t|
+    t.string "mailing_address"
+    t.string "apartment"
+    t.string "mailing_city"
+    t.string "mailing_state"
+    t.string "mailing_zip_code"
+    t.string "country"
+    t.string "home_phone_number"
+    t.string "mobile_phone_number"
+    t.string "personal_email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "theocratic_email"
+    t.string "post_office_box_number"
+    t.string "post_office_box_city"
+    t.string "post_office_box_state"
+    t.string "post_office_box_zip_code"
+    t.bigint "publisher_id", null: false
+    t.index ["publisher_id"], name: "index_contact_informations_on_publisher_id"
+  end
+
+  create_table "field_service_groups", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "kingdom_halls", force: :cascade do |t|
+    t.string "address"
+    t.integer "auditorium_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "public_speakers", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "congregation_id"
+    t.index ["congregation_id"], name: "index_public_speakers_with_congregation_id"
+  end
+
+  create_table "publishers", force: :cascade do |t|
+    t.boolean "baptized"
+    t.date "baptism_date"
+    t.boolean "other_sheep"
+    t.boolean "anointed"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "soul_id", null: false
+    t.boolean "unbaptized"
+    t.date "unbaptized_date"
+    t.boolean "enrolled_in_school"
+    t.date "school_enrollment_date"
+    t.integer "congregation_id"
+    t.bigint "public_speaker_id"
+    t.index ["congregation_id"], name: "index_congregation_id"
+    t.index ["public_speaker_id"], name: "index_publishers_on_public_speaker_id"
+    t.index ["soul_id"], name: "index_publishers_on_soul_id"
+  end
 
   create_table "souls", force: :cascade do |t|
     t.string "first_name"
@@ -23,6 +91,23 @@ ActiveRecord::Schema.define(version: 2019_12_07_000350) do
     t.string "unique_identifier"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "gender"
+    t.date "baptism_date"
+    t.date "death_date"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "contact_informations", "publishers"
+  add_foreign_key "publishers", "souls"
 end

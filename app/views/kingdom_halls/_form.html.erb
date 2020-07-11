@@ -1,0 +1,27 @@
+<%= form_with(model: kingdom_hall, local: true) do |form| %>
+  <% if kingdom_hall.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(kingdom_hall.errors.count, "error") %> prohibited this kingdom_hall from being saved:</h2>
+
+      <ul>
+        <% kingdom_hall.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :auditorium_count %>
+    <%= form.number_field :auditorium_count %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

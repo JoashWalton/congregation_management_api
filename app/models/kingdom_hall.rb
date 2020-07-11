@@ -1,0 +1,2 @@
+class KingdomHall < ApplicationRecord
+end

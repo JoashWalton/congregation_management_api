@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @kingdom_hall.address %>
+</p>
+
+<p>
+  <strong>Auditorium count:</strong>
+  <%= @kingdom_hall.auditorium_count %>
+</p>
+
+<%= link_to 'Edit', edit_kingdom_hall_path(@kingdom_hall) %> |
+<%= link_to 'Back', kingdom_halls_path %>
