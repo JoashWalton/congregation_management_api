@@ -1,0 +1,2 @@
+class PublicTalk < ApplicationRecord
+end

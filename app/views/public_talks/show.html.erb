@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @public_talk.number %>
+</p>
+
+<p>
+  <strong>Public talk title:</strong>
+  <%= @public_talk.public_talk_title %>
+</p>
+
+<p>
+  <strong>Public talk note:</strong>
+  <%= @public_talk.public_talk_note %>
+</p>
+
+<p>
+  <strong>Revision date:</strong>
+  <%= @public_talk.revision_date %>
+</p>
+
+<p>
+  <strong>File pdf url:</strong>
+  <%= @public_talk.file_pdf_url %>
+</p>
+
+<p>
+  <strong>File doc url:</strong>
+  <%= @public_talk.file_doc_url %>
+</p>
+
+<%= link_to 'Edit', edit_public_talk_path(@public_talk) %> |
+<%= link_to 'Back', public_talks_path %>

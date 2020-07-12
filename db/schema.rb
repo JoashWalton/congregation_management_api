@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_014315) do
+ActiveRecord::Schema.define(version: 2020_07_12_014250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,17 @@ ActiveRecord::Schema.define(version: 2020_05_01_014315) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "congregation_id"
     t.index ["congregation_id"], name: "index_public_speakers_with_congregation_id"
+  end
+
+  create_table "public_talks", force: :cascade do |t|
+    t.integer "number"
+    t.string "public_talk_title"
+    t.string "public_talk_note"
+    t.date "revision_date"
+    t.string "file_pdf_url"
+    t.string "file_doc_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "publishers", force: :cascade do |t|
