@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-
 # Class that represents a collection of talk titles and corresponding data for each outline.
+#
 # Attributes:
 # number - Integer, number of the outline
 # public_talk_title - String, title of the outline
@@ -8,11 +8,10 @@
 # revision_date - Date, month and year of outline revision
 # file_pdf_url - String, location of outline as a pdf
 # file_doc_url - String, location of outline as a doc
-
 class PublicTalk < ApplicationRecord
   S99_PUBLIC_TALK_TITLES_PDF = 'congregation_management_api/storage/S-99-E.pdf'
 
-  S99a_TALKS_BY_SUBJECT = {
+  S99A_TALKS_BY_SUBJECT = {
     "Bible/God": [
       4, 26, 37, 54, 76, 80, 88, 99, 100, 101, 114, 124, 133, 137, 139, 145, 164, 169, 175, 187
     ],
@@ -29,13 +28,15 @@ class PublicTalk < ApplicationRecord
       5, 13, 27, 28, 29, 30, 104, 110, 113, 118, 146, 190
     ],
     "Kingdom/Paradise": [
-      19, 21, 23, 24, 35, 42, 44, 47, 49, 60, 61, 62, 75, 85, 90, 91, 109, 111, 120, 122, 130, 132, 154, 162, 170, 174, 180, 182
+      19, 21, 23, 24, 35, 42, 44, 47, 49, 60, 61, 62, 75, 85, 90, 91, 109, 111, 120, 122, 130, 132, 154, 162, 170, 174,
+      180, 182
     ],
     "Last Days/God's Judgement": [
       2, 6, 20, 34, 38, 40, 41, 84, 93, 98, 102, 106, 108, 121, 150, 152, 153, 156, 176, 181, 193
     ],
     "Religion/Worship": [
-      3, 8, 36, 43, 45, 52, 55, 56, 58, 82, 83, 86, 89, 92, 94, 95, 96, 125, 126, 127, 128, 129, 134, 135, 136, 140, 155, 161, 163, 173
+      3, 8, 36, 43, 45, 52, 55, 56, 58, 82, 83, 86, 89, 92, 94, 95, 96, 125, 126, 127, 128, 129, 134, 135, 136, 140,
+      155, 161, 163, 173
     ],
     "Trials/Problems": [
       32, 50, 57, 65, 73, 105, 117, 141, 143, 177, 184, 186, 194
