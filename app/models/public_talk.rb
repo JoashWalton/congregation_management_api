@@ -11,6 +11,8 @@
 class PublicTalk < ApplicationRecord
   S99_PUBLIC_TALK_TITLES_PDF = 'congregation_management_api/storage/S-99-E.pdf'
 
+  MANUAL_EDIT_TITLES = [29, 51, 71, 75, 76, 79, 104, 114, 119, 133, 153, 180, 194].freeze
+
   S99A_TALKS_BY_SUBJECT = {
     "Bible/God": [
       4, 26, 37, 54, 76, 80, 88, 99, 100, 101, 114, 124, 133, 137, 139, 145, 164, 169, 175, 187
@@ -53,15 +55,61 @@ class PublicTalk < ApplicationRecord
 
   def self.process_public_talk_titles
     read_s99 = PDF::Reader.new(S99_PUBLIC_TALK_TITLES_PDF)
+
     read_s99.pages.each do |page|
       # Remove newlines, strip whitespace off titles, remove the document label, retunr array of arrays
       captured_outlines = page.text.delete!("\n").strip.gsub('S-99-E   10/18', '').scan(/(\d*)[.]\s(\D*)/)
       captured_outlines.each do |capture|
-        # need to remove introductory paragrpah on page 1, no number!
-        unless capture[0].to_i > 0 
-          PublicTalk.new number: capture[0].to_i, public_talk_title: capture[1]
-        end
+        next unless capture[0].to_i.positive? # need to remove introductory paragrpah on page 1, no number!
+
+        @public_talk_number = capture[0].to_i
+        @public_talk_title = capture[1].strip # some irrevernt space leftover...
+
+        manually_edit_talk_titles(@public_talk_number) if MANUAL_EDIT_TITLES.include?(@public_talk_number)
+        PublicTalk.create number: @public_talk_number, public_talk_title: @public_talk_title
       end
     end
+  end
+
+  private
+
+  # Scraped talk titles come with no spaces around hyphen, need to dress the hyphen up!
+  def correctly_space_hyphen_in_title(public_talk_title)
+    return unless /\p{Pd}/.match?(public_talk_title)
+
+    @public_talk_title.gsub('-', ' - ') # this does not work right now...
+  end
+
+  # Scraped talk titles required some manual editing repeatedly.
+  # TODO Need to see if this consistently happens on next S-99 iteration
+  def manually_edit_talk_titles(public_talk_number)
+    @public_talk_title = case public_talk_number
+                         when 29
+                           'Responsibilities and Rewards of Parenthood'
+                         when 51
+                           'Is the Truth Transforming Your Life?'
+                         when 71
+                           'How to Keep Spiritually Awake'
+                         when 75
+                           'Do You Recognize Jehovah’s Sovereignty in Your Personal Life?'
+                         when 76
+                           'Bible Principles—Can They Help Us to Cope With Today’s Problems?'
+                         when 79
+                           'Friendship With God, Friendship With the World—Which Will You Choose?'
+                         when 104
+                           'Parents—Are You Building With Fire-Resistant Materials?'
+                         when 114
+                           'Appreciating Marvels of God’s Creation'
+                         when 119
+                           'Christian Separateness From the World—Why Beneﬁcial'
+                         when 133
+                           'The Origin of Humans—Does It Matter What You Believe?'
+                         when 153
+                           'Keep Close in Mind the “Fear-Inspiring Day”!'
+                         when 180
+                           'The Resurrection—Why That Hope Should Be Real to You'
+                         when 194
+                           'How Godly Wisdom Beneﬁts Us'
+                         end
   end
 end
