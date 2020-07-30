@@ -1,0 +1,47 @@
+<%= form_with(model: public_talk, local: true) do |form| %>
+  <% if public_talk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(public_talk.errors.count, "error") %> prohibited this public_talk from being saved:</h2>
+
+      <ul>
+        <% public_talk.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :public_talk_title %>
+    <%= form.text_field :public_talk_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :public_talk_note %>
+    <%= form.text_field :public_talk_note %>
+  </div>
+
+  <div class="field">
+    <%= form.label :revision_date %>
+    <%= form.date_select :revision_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file_pdf_url %>
+    <%= form.text_field :file_pdf_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file_doc_url %>
+    <%= form.text_field :file_doc_url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
