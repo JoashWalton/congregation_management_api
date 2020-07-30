@@ -5,9 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th>Public talk number</th>
+      <th>Number</th>
       <th>Public talk title</th>
-      <th>Public talk subject</th>
+      <th>Public talk note</th>
+      <th>Revision date</th>
+      <th>File pdf url</th>
+      <th>File doc url</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +18,12 @@
   <tbody>
     <% @public_talks.each do |public_talk| %>
       <tr>
-        <td><%= public_talk.public_talk_number %></td>
+        <td><%= public_talk.number %></td>
         <td><%= public_talk.public_talk_title %></td>
-        <td><%= public_talk.public_talk_subject %></td>
+        <td><%= public_talk.public_talk_note %></td>
+        <td><%= public_talk.revision_date %></td>
+        <td><%= public_talk.file_pdf_url %></td>
+        <td><%= public_talk.file_doc_url %></td>
         <td><%= link_to 'Show', public_talk %></td>
         <td><%= link_to 'Edit', edit_public_talk_path(public_talk) %></td>
         <td><%= link_to 'Destroy', public_talk, method: :delete, data: { confirm: 'Are you sure?' } %></td>

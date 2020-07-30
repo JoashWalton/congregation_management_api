@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_164249) do
+ActiveRecord::Schema.define(version: 2020_07_12_024137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,9 +86,12 @@ ActiveRecord::Schema.define(version: 2020_06_07_164249) do
   end
 
   create_table "public_talks", force: :cascade do |t|
-    t.integer "public_talk_number"
+    t.integer "number"
     t.string "public_talk_title"
-    t.string "public_talk_subject"
+    t.string "public_talk_note"
+    t.date "revision_date"
+    t.string "file_pdf_url"
+    t.string "file_doc_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

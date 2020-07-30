@@ -62,13 +62,18 @@ class PublicTalksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_public_talk
-      @public_talk = PublicTalk.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def public_talk_params
-      params.require(:public_talk).permit(:public_talk_number, :public_talk_title, :public_talk_subject)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_public_talk
+    @public_talk = PublicTalk.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def public_talk_params
+    params.require(:public_talk).permit(
+      :number, :public_talk_title, :public_talk_note, :revision_date, :file_pdf_url, :file_doc_url,
+      :s99_public_talk_titles_pdf, :s99_public_talk_subjects_pdf,
+      public_talk_pdf_outlines: [], public_talk_doc_outlines: []
+    )
+  end
 end

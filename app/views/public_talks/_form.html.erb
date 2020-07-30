@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :public_talk_number %>
-    <%= form.number_field :public_talk_number %>
+    <%= form.label :number %>
+    <%= form.number_field :number %>
   </div>
 
   <div class="field">
@@ -22,8 +22,23 @@
   </div>
 
   <div class="field">
-    <%= form.label :public_talk_subject %>
-    <%= form.text_field :public_talk_subject %>
+    <%= form.label :public_talk_note %>
+    <%= form.text_field :public_talk_note %>
+  </div>
+
+  <div class="field">
+    <%= form.label :revision_date %>
+    <%= form.date_select :revision_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file_pdf_url %>
+    <%= form.text_field :file_pdf_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file_doc_url %>
+    <%= form.text_field :file_doc_url %>
   </div>
 
   <div class="actions">

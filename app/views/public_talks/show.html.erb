@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Public talk number:</strong>
-  <%= @public_talk.public_talk_number %>
+  <strong>Number:</strong>
+  <%= @public_talk.number %>
 </p>
 
 <p>
@@ -11,8 +11,23 @@
 </p>
 
 <p>
-  <strong>Public talk subject:</strong>
-  <%= @public_talk.public_talk_subject %>
+  <strong>Public talk note:</strong>
+  <%= @public_talk.public_talk_note %>
+</p>
+
+<p>
+  <strong>Revision date:</strong>
+  <%= @public_talk.revision_date %>
+</p>
+
+<p>
+  <strong>File pdf url:</strong>
+  <%= @public_talk.file_pdf_url %>
+</p>
+
+<p>
+  <strong>File doc url:</strong>
+  <%= @public_talk.file_doc_url %>
 </p>
 
 <%= link_to 'Edit', edit_public_talk_path(@public_talk) %> |
