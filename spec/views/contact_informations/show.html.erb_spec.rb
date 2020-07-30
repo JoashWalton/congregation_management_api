@@ -1,17 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe "contact_informations/show", type: :view do
+  let(:publisher) { create :publisher }
   before(:each) do
     @contact_information = assign(:contact_information, ContactInformation.create!(
-      :address => "Address",
+      :mailing_address => "Address",
       :apartment => "Apartment",
-      :city => "City",
-      :state => "State",
-      :zipcode => "Zipcode",
+      :mailing_city => "City",
+      :mailing_state => "State",
+      :mailing_zip_code => "Zipcode",
       :country => "Country",
       :home_phone_number => "Home Phone Number",
       :mobile_phone_number => "Mobile Phone Number",
-      :email => "Email"
+      :personal_email => "Email",
+      publisher_id: publisher.id
     ))
   end
 

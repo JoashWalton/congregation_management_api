@@ -6,7 +6,9 @@ RSpec.describe "souls/show", type: :view do
       :first_name => "First Name",
       :middle_name => "Middle Name",
       :last_name => "Last Name",
-      :unique_identifier => "Unique Identifier"
+      :unique_identifier => "Unique Identifier",
+      :birth_date => "Birth date",
+      :gender => "Gender"
     ))
   end
 
@@ -16,5 +18,7 @@ RSpec.describe "souls/show", type: :view do
     expect(rendered).to match(/Middle Name/)
     expect(rendered).to match(/Last Name/)
     expect(rendered).to match(/Unique Identifier/)
+    expect(rendered).to match(/Birth date/)
+    expect(rendered).to match(/Gender/)
   end
 end

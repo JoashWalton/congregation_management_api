@@ -7,13 +7,17 @@ RSpec.describe "souls/index", type: :view do
         :first_name => "First Name",
         :middle_name => "Middle Name",
         :last_name => "Last Name",
-        :unique_identifier => "Unique Identifier"
+        :unique_identifier => "Unique Identifier",
+        :birth_date => "Birth date",
+        :gender => "Gender"
       ),
       Soul.create!(
         :first_name => "First Name",
         :middle_name => "Middle Name",
         :last_name => "Last Name",
-        :unique_identifier => "Unique Identifier"
+        :unique_identifier => "Unique Identifier",
+        :birth_date => "Birth date",
+        :gender => "Gender"
       )
     ])
   end
@@ -24,5 +28,7 @@ RSpec.describe "souls/index", type: :view do
     assert_select "tr>td", :text => "Middle Name".to_s, :count => 2
     assert_select "tr>td", :text => "Last Name".to_s, :count => 2
     assert_select "tr>td", :text => "Unique Identifier".to_s, :count => 2
+    assert_select "tr>td", :text => "Birth date".to_s, :count => 2
+    assert_select "tr>td", :text => "Gender".to_s, :count => 2
   end
 end

@@ -14,5 +14,7 @@ FactoryBot.define do
     post_office_box_city { Faker::Address.city  }
     post_office_box_state { [Faker::Address.state, Faker::Address.state_abbr].sample }
     post_office_box_zip_code { Faker::Address.zip_code }
+
+    association :publisher, factory: :publisher, strategy: :create
   end
 end

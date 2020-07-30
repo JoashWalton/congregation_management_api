@@ -8,5 +8,8 @@ FactoryBot.define do
     anointed { false }
     enrolled_in_school { false }
     school_enrollment_date { "2020-4-22" }
+
+    association :soul, factory: :soul
+    association :congregation, factory: :congregation
   end
 end

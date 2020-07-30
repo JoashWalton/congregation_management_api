@@ -1,29 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe "contact_informations/index", type: :view do
+  let(:publisher_one) { create :publisher }
+  let(:publisher_two) { create :publisher }
   before(:each) do
     assign(:contact_informations, [
       ContactInformation.create!(
-        :address => "Address",
+        :mailing_address => "Address",
         :apartment => "Apartment",
-        :city => "City",
-        :state => "State",
-        :zipcode => "Zipcode",
+        :mailing_city => "City",
+        :mailing_state => "State",
+        :mailing_zip_code => "Zipcode",
         :country => "Country",
         :home_phone_number => "Home Phone Number",
         :mobile_phone_number => "Mobile Phone Number",
-        :email => "Email"
+        :personal_email => "Email",
+        publisher_id: publisher_one.id
       ),
       ContactInformation.create!(
-        :address => "Address",
+        :mailing_address => "Address",
         :apartment => "Apartment",
-        :city => "City",
-        :state => "State",
-        :zipcode => "Zipcode",
+        :mailing_city => "City",
+        :mailing_state => "State",
+        :mailing_zip_code => "Zipcode",
         :country => "Country",
         :home_phone_number => "Home Phone Number",
         :mobile_phone_number => "Mobile Phone Number",
-        :email => "Email"
+        :personal_email => "Email",
+        publisher_id: publisher_two.id
       )
     ])
   end
