@@ -1,0 +1,2 @@
+module PublicTalksHelper
+end
