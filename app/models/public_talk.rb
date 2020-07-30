@@ -9,7 +9,7 @@
 # file_pdf_url - String, location of outline as a pdf
 # file_doc_url - String, location of outline as a doc
 class PublicTalk < ApplicationRecord
-  S99_PUBLIC_TALK_TITLES_PDF = 'congregation_management_api/storage/S-99-E.pdf'
+  S99_PUBLIC_TALK_TITLES_PDF = 'storage/S-99-E.pdf'
 
   MANUAL_EDIT_TITLES = [29, 51, 71, 75, 76, 79, 104, 114, 119, 133, 153, 180, 194].freeze
 
@@ -53,8 +53,8 @@ class PublicTalk < ApplicationRecord
   has_many_attached :public_talk_pdf_outlines
   has_many_attached :public_talk_doc_outlines
 
-  def self.process_public_talk_titles
-    read_s99 = PDF::Reader.new(S99_PUBLIC_TALK_TITLES_PDF)
+  def process_public_talk_titles
+    read_s99 = PDF::Reader.new(Rails.root.join(S99_PUBLIC_TALK_TITLES_PDF))
 
     read_s99.pages.each do |page|
       # Remove newlines, strip whitespace off titles, remove the document label, retunr array of arrays
@@ -64,14 +64,12 @@ class PublicTalk < ApplicationRecord
 
         @public_talk_number = capture[0].to_i
         @public_talk_title = capture[1].strip # some irrevernt space leftover...
-
+        
         manually_edit_talk_titles(@public_talk_number) if MANUAL_EDIT_TITLES.include?(@public_talk_number)
         PublicTalk.create number: @public_talk_number, public_talk_title: @public_talk_title
       end
     end
   end
-
-  private
 
   # Scraped talk titles come with no spaces around hyphen, need to dress the hyphen up!
   def correctly_space_hyphen_in_title(public_talk_title)
