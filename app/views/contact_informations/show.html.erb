@@ -2,7 +2,7 @@
 
 <p>
   <strong>Address:</strong>
-  <%= @contact_information.address %>
+  <%= @contact_information.mailing_address %>
 </p>
 
 <p>
@@ -12,17 +12,17 @@
 
 <p>
   <strong>City:</strong>
-  <%= @contact_information.city %>
+  <%= @contact_information.mailing_city %>
 </p>
 
 <p>
   <strong>State:</strong>
-  <%= @contact_information.state %>
+  <%= @contact_information.mailing_state %>
 </p>
 
 <p>
   <strong>Zipcode:</strong>
-  <%= @contact_information.zipcode %>
+  <%= @contact_information.mailing_zip_code %>
 </p>
 
 <p>
@@ -42,7 +42,7 @@
 
 <p>
   <strong>Email:</strong>
-  <%= @contact_information.email %>
+  <%= @contact_information.personal_email %>
 </p>
 
 <%= link_to 'Edit', edit_contact_information_path(@contact_information) %> |

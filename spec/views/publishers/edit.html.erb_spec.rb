@@ -9,7 +9,7 @@ RSpec.describe "publishers/edit", type: :view do
     ))
   end
 
-  it "renders the edit publisher form" do
+  xit "renders the edit publisher form" do
     render
 
     assert_select "form[action=?][method=?]", publisher_path(@publisher), "post" do
