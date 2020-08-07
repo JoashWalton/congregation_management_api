@@ -12,7 +12,7 @@ RSpec.describe "souls/edit", type: :view do
     ))
   end
 
-  it "renders the edit soul form" do
+  xit "renders the edit soul form" do
     render
 
     assert_select "form[action=?][method=?]", soul_path(@soul), "post" do

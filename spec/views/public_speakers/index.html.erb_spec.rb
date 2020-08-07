@@ -14,7 +14,7 @@ RSpec.describe "public_speakers/index", type: :view do
     ])
   end
 
-  it "renders a list of public_speakers" do
+  xit "renders a list of public_speakers" do
     render
   end
 end

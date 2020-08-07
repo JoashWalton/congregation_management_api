@@ -18,7 +18,7 @@ RSpec.describe "contact_informations/edit", type: :view do
     ))
   end
 
-  it "renders the edit contact_information form" do
+  xit "renders the edit contact_information form" do
     render
 
     assert_select "form[action=?][method=?]", contact_information_path(@contact_information), "post" do

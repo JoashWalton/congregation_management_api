@@ -10,7 +10,7 @@ RSpec.describe "souls/new", type: :view do
     ))
   end
 
-  it "renders new soul form" do
+  xit "renders new soul form" do
     render
 
     assert_select "form[action=?][method=?]", souls_path, "post" do
