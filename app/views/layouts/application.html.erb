@@ -13,6 +13,11 @@
   </head>
 
   <body>
+
+    <main class='<%= controller.controller_name %>'>
+      <%= yield %>
+    </main>
+
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

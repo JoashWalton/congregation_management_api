@@ -17,7 +17,7 @@
 
   <tbody>
     <% @public_talks.each do |public_talk| %>
-      <tr>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= public_talk.number %></td>
         <td><%= public_talk.public_talk_title %></td>
         <td><%= public_talk.public_talk_note %></td>
